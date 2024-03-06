@@ -1,28 +1,17 @@
 <template>
   <v-container>
     <v-row justify="space-between">
-      <!-- Left side (flex: 3) -->
       <v-col class="left-side" cols="12" sm="6">
         <v-img src="@/assets/desk.jpg" alt="Desk Image" class="left-content"></v-img>
-        <div
-          v-for="(coordinates, label) in imageLabels.image_labels"
-          :key="label"
-          class="overlay"
-          :class="{ 'fade-in': selectedLabels.includes(label) }"
-          :style="getOverlayStyle(label)"
-        ></div>
+        <div v-for="(coordinates, label) in imageLabels.image_labels" :key="label" class="overlay"
+          :class="{ 'fade-in': selectedLabels.includes(label) }" :style="getOverlayStyle(label)"></div>
       </v-col>
 
-      <!-- Space between the columns -->
       <v-col cols="12" sm="1"></v-col>
 
-      <!-- Right side (flex: 9) -->
       <v-col cols="12" sm="5">
-        <ImageCheckboxes
-          :imageLabels="imageLabels"
-          :selectedLabels="selectedLabels"
-          @update:selectedLabels="updateSelectedLabels"
-        />
+        <ImageCheckboxes :imageLabels="imageLabels" :selectedLabels="selectedLabels"
+          @update:selectedLabels="updateSelectedLabels" />
       </v-col>
     </v-row>
   </v-container>
@@ -38,7 +27,7 @@ export default {
     return {
       imageLabels: {},
       selectedLabels: [],
-      dataLoaded: false, // Add a flag to track data loading status
+      dataLoaded: false,
     };
   },
   created() {
@@ -51,7 +40,7 @@ export default {
       try {
         console.log("THIS IS THE JSON", data);
         this.imageLabels = data;
-        this.dataLoaded = true; // Set the flag to true after loading data
+        this.dataLoaded = true;
       } catch (error) {
         console.error("Error loading data:", error);
       }

@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style scoped>
-/* You can add some styling for better alignment if needed */
+
 </style>
